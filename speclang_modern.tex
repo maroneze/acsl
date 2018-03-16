@@ -936,10 +936,17 @@ constructs (shown in Figure~\ref{fig:gram:oldandresult}).
   predicate or term \lstinline|e| in the pre-state of the function.
 \item \result\indexttbs{result} denotes the returned value of the function.
 \end{itemize}
-\lstinline|\old(e)| and \result{} can be used only in \ensures{} clauses, since
-the other clauses already refer to the pre-state. In addition,
-\result{} can not be used in the contract of a function that returns
-\void{}.
+\lstinline|\old(e)| and \result{} can be used only in \ensures{}, \assigns{}
+and \allocates{} clauses, since
+the other clauses already refer to the pre-state. The use of \result{} is also
+subject to other restrictions:
+
+\begin{itemize}
+\item \result{} can not be used in the contract of a function that returns
+  \void{};
+\item in \assigns{} and \ensures{} clauses, a \result{} not directly inside an
+  \lstinline|\at(...,Post)| (either explicitly or implicitly) is forbidden.
+\end{itemize}
 
 C function parameters\index{formal parameter} are obtained by
 value from actual parameters that mostly remain unaltered by the
