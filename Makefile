@@ -197,7 +197,7 @@ super-clean: clean
 	rm -f $(PDF_OUTPUTS)
 
 # The ACSL document annoted about what is not implemented into Frama-C
-acsl-implementation.pdf: $(DEPS) VERSION
+acsl-implementation.pdf: $(DEPS) VERSION VERSION_CODENAME
 
 acsl-implementation.tex: $(MAIN).tex Makefile
 	@rm -f $@
@@ -233,6 +233,8 @@ install: acsl-implementation.pdf acsl.pdf
 tutorial-valid: $(TUTORIAL_EXAMPLES:.c=.proved)
 VERSION:
 	$(FRAMAC) -version > $@
+VERSION_CODENAME:
+	cp ../../VERSION_CODENAME .
 else
 acsl: acsl.pdf
 tutorial: acsl-mini-tutorial.pdf
@@ -242,6 +244,9 @@ install:
 	@exit 2
 VERSION:
 	@echo "VERSION can only be made within Frama-C sources"
+	@exit 2
+VERSION_CODENAME:
+	@echo "VERSION_CODENAME can only be made within Frama-C sources"
 	@exit 2
 endif
 

@@ -14,7 +14,8 @@ version={4.0}]
 \usepackage{ifthen}
 
 \input{./macros_modern}
-\newcommand{\framacversion}{\input{VERSION}}
+\newcommand{\framacversion}%
+           {Frama-C~\input{VERSION}~(\input{VERSION_CODENAME}\unskip)}
 
 %Do not touch the following line. It is used in a Makefile hack to
 %produce the ACSL document shipped with the Frama-C distribution.

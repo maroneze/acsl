@@ -26,6 +26,7 @@ main.pdf
 /*.cm*
 /*.o
 /VERSION
+/VERSION_CODENAME
 
 # PDFs
 /acsl-implementation.pdf
